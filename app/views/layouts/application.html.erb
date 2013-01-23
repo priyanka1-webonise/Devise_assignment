@@ -36,7 +36,9 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fixed-top">
+
+    <!--</ul>-->
+    <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
@@ -47,10 +49,18 @@
           <a class="brand" href="#">DeviseAssignment</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete  %></li>
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
+            <ul class="nav pull-right">
+              <% if current_user.present? %>
+              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete  %></li>
+              <% else %>
+                  <li><%= link_to "Sign in", "/path3"  %></li>
+              <% end %>
+            </ul>
+
           </div><!--/.nav-collapse -->
         </div>
       </div>
