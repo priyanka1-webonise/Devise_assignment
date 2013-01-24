@@ -1,0 +1,37 @@
+
+<%#= javascript_include_tag "jquery.validate"%>
+
+
+<% provide(:title, 'Sign up') %>
+
+<div class="span5 offset2">
+  <h3 class="user_signup">User Sign up</h3>
+
+
+  <%= form_for @product,:url => { :action => "create" }, :method => :post, :html => { :class => 'form-horizontal' }  do |f| %>
+
+
+      <%#= render 'error_messages', :object => f.object %>
+
+      <div class="control-group" id="customText">
+        <%= f.label :name, "Name", :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :name, :placeholder => "First Name", :class => 'custom_text'%>
+
+
+        </div>
+      </div>
+
+
+
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit 'create', :class => "btn btn-large btn-primary" %>
+        </div>
+      </div>
+
+  <% end %>
+</div>
+
+
+

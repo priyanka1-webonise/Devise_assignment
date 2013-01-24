@@ -1,10 +1,49 @@
 DeviseAssignment::Application.routes.draw do
-  devise_for :users # :controllers => { :registrations => "registrations" }
+  #devise_for :admins
+
+
+  devise_for :users #, :controllers => { :sessions => "sessions"}
+  devise_for :admins, :controllers => { :sessions => "admin/sessions"}
+
   resources :users do
     member do
       get :home
       end
   end
+
+
+  namespace :admin do
+    resources :homes do
+      collection  do
+        get :home
+      end
+    end
+
+    resources :products do
+
+    end
+  end
+
+  devise_scope :admin do
+   get "admin", :to => "devise/sessions#new"
+  end
+  #match '/admin',  :to => 'admins#show'
+
+  #devise_scope :user do
+   # get "sign_in", :to => "devise/sessions#new"
+  #end
+
+  #constraints(:subdomain => ADMIN_SUBDOMAIN) do
+   # scope :module => "admin" do
+    #  resources :admins  do
+        #collection  do
+     #     get :show_admin_dashboard
+
+        #end
+      #end
+     # root :to => 'admins#home'
+    #end
+  #end
   #devise_scope :user do
    # match "/" => "devise/registrations#new"
   #end
