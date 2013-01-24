@@ -1,0 +1,46 @@
+
+<% provide(:title, 'Add Products') %>
+
+<div class="row">
+  <div class="span5 offset2">
+    <h1> </h1>
+
+    <%= form_for @product, :method => :post, :html => { :class => 'form-horizontal' }  do |f| %>
+
+        <%#= render 'error_messages', :object => f.object %>
+
+        <div class="control-group" id="customText">
+          <%= f.label :name, "Name", :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :name, :class => 'text_field'%>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :price, "Product Price", :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.text_field :price %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :publish_date, "Office Location", :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.text_field :publish_date , :class => 'text_field' %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls">
+            <%= f.submit 'Add', :class => "btn" %>
+
+          </div>
+        </div>
+
+
+
+  <% end %>
+  </div>
+
+</div>
+
+
