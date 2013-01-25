@@ -1,46 +1,37 @@
 
-<% provide(:title, 'Add Products') %>
+<%#= javascript_include_tag "jquery.validate"%>
 
-<div class="row">
-  <div class="span5 offset2">
-    <h1> </h1>
 
-    <%= form_for @product, :method => :post, :html => { :class => 'form-horizontal' }  do |f| %>
+<% provide(:title, 'Sign up') %>
 
-        <%#= render 'error_messages', :object => f.object %>
+<div class="span5 offset2">
+  <h3 class="user_signup">User Sign up</h3>
 
-        <div class="control-group" id="customText">
-          <%= f.label :name, "Name", :class => 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :name, :class => 'text_field'%>
-          </div>
+
+  <%= form_for @product,:url => { :action => "create" }, :method => :post, :html => { :class => 'form-horizontal' }  do |f| %>
+
+
+      <%#= render 'error_messages', :object => f.object %>
+
+      <div class="control-group" id="customText">
+        <%= f.label :name, "Name", :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :name, :placeholder => "First Name", :class => 'custom_text'%>
+
+
         </div>
+      </div>
 
-        <div class="control-group">
-          <%= f.label :price, "Product Price", :class => 'control-label'  %>
-          <div class="controls">
-            <%= f.text_field :price %>
-          </div>
+
+
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit 'create', :class => "btn btn-large btn-primary" %>
         </div>
-        <div class="control-group">
-          <%= f.label :publish_date, "Office Location", :class => 'control-label'  %>
-          <div class="controls">
-            <%= f.text_field :publish_date , :class => 'text_field' %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <div class="controls">
-            <%= f.submit 'Add', :class => "btn" %>
-
-          </div>
-        </div>
-
-
+      </div>
 
   <% end %>
-  </div>
-
 </div>
+
 
 

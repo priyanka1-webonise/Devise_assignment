@@ -10,27 +10,32 @@
       <br>
       <table  class="table table-hover">
         <tr>
-         <th>PRODUCTS</th>
+          <th>PRODUCTS</th>
           <th>ACTIONS</th>
         </tr>
-        <% @products.each do |product| %>
-            <tr>
 
-              <td>
-                <div class="control-group">
-                  <%= product.name %>
+         <tr>
+            <% @products.each do |product| %>
+            <td>
+              <div class="control-group">
+                 <%= product.name %>
+              </div>
+            </td>
+            <td>
+               <div class="control-group">
+                <span><%= link_to "edit" %></span>
+                <span><%= link_to "delete" %></span>
                 </div>
-              </td>
-              <td>
-                <div class="control-group">
-                  <span><%= link_to "edit" %></span>
+            </td>
+              <%end %>
+         </tr>
 
-                  <span><%= link_to "delete" %></span>
-                </div>
-              </td>
-            </tr>
-        <%end %>
-        <tr></tr>
+         <tr>
+           <td>
+             <span><%= link_to "create product",new_admin_product_path %></span>
+
+           </td>
+         </tr>
         <tr></tr>
         <tr></tr>
       </table>
