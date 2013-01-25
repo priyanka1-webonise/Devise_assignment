@@ -4,6 +4,7 @@ gem 'rails', '3.2.9'
 gem 'mysql2'
 gem "twitter-bootstrap-rails"
 gem 'devise'
+gem 'carrierwave'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

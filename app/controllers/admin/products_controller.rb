@@ -1,14 +1,16 @@
 class Admin::ProductsController < ApplicationController
+  before_filter :authenticate_admin! #, :only => [:index ]
+
   def new
     @product = Product.new
   end
 
   def create
-    @product = Product.new(params[:user])
+    @product = Product.new(params[:product])
     # Handle a successful save.
     if @product.save
       flash[:success] = "Created!"
-      redirect_to
+      redirect_to admin_products_path
     else
       render 'new'
     end
@@ -24,8 +26,24 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-    @destroy.destroy
-    redirect_to _path
+    @product.destroy
+    redirect_to admin_products_path
   end
+
+  def edit
+   # @admin=current_Admin.id
+    @product=Product.find(params[:id])
+  end
+
+  def update
+    @product=Product.find(params[:id])
+    if @product.update_attributes(params[:product])
+      flash[:success]="updated successfully"
+      redirect_to admin_products_path
+    else
+      render 'edit'
+    end
+  end
+
 end
 

@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="code span14 offset 13"><h2>Products</h2></div>
+</div>
+<br>
+<div>
+  <%= form_tag  :method => :get, :url => { :action => "index" }, :html => { :class => "form-horizontal"} do %>
+
+      <br>
+      <br>
+      <br>
+      <table  class="table table-hover">
+        <tr>
+          <th>PRODUCTS</th>
+          <th></th>
+        </tr>
+        <% @products.each do |product| %>
+            <tr>
+              <td>
+                <div class="control-group">
+                  <%=  image_tag(product.product_image, :class => "img1")%>
+                </div>
+              </td>
+              <td>
+                <div class="control-group">
+                  <%= product.name %>
+                </div>
+              </td>
+              <td>
+                <div class="control-group">
+                  <%= product.price %>
+                </div>
+              </td>
+              <td>
+                <div class="control-group">
+                  <span><%= link_to "add cart" %></span>
+
+                </div>
+              </td>
+            </tr>
+        <%end %>
+
+        <tr></tr>
+        <tr></tr>
+      </table>
+  <%end%>
+</div>

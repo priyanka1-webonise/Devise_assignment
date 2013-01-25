@@ -1,0 +1,53 @@
+<%#= javascript_include_tag "jquery.validate"%>
+<% provide(:title, 'Edit Product') %>
+
+<div class="row">
+  <div class="span5 offset2">
+    <h1> </h1>
+
+    <%= form_for @product, :url => admin_product_path, :method => :put, :html => { :class => 'form-horizontal new_product' }  do |f| %>
+
+        <%= render :partial => 'admin/shared/error_messages' %>
+
+        <div class="control-group">
+          <%= f.label :name, "Name", :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :name %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :price, "Price", :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :price %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :publish_date, "Publish Date", :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :publish_date, :id => "calender" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :product_image, "Product Image", :class => 'control-label' %>
+          <div class="controls">
+            <%= f.file_field :product_image, :class => 'file_field' %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls">
+            <%= f.submit 'Update', :class => "btn btn-large btn-primary" %>
+          </div>
+        </div>
+
+    <% end %>
+  </div>
+
+</div>
+
+
+
+

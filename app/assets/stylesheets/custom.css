@@ -1,0 +1,30 @@
+#my_footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #90ee90;
+    height: 60px;
+}
+
+.my_footer_container  {
+    display: block;
+}
+
+.my_muted{
+    float: right;
+    margin-right: 6px;
+    color: #000000;
+    margin-top: 35px;
+}
+
+.products_class
+{
+    margin-right: 100px;
+}
+
+.img1
+{
+    height :30px;
+    width  :30px
+}

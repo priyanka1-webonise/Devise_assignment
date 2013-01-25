@@ -1,4 +1,6 @@
 class Admin::SessionsController < Devise::SessionsController
+  before_filter :my_filter, :only => [:new ]
+
   def create
     resource = warden.authenticate!(:scope => resource_name)
     sign_in(resource_name, resource)
@@ -7,6 +9,14 @@ class Admin::SessionsController < Devise::SessionsController
     else
     end
   end
+
+  def my_filter
+    if current_user.present
+      logger.info("##########Else")
+     redirect_to root_path
+    end
+  end
+
 end
 
 
