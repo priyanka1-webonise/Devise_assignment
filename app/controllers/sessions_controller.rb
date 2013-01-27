@@ -5,9 +5,9 @@ class SessionsController < Devise::SessionsController
     resource = warden.authenticate!(:scope => resource_name)
     sign_in(resource_name, resource)
 
-    if current_user.admin?
+    if current_user.present?
 
-      redirect_ product_index_path
+      redirect_to products_path
 
     else
 

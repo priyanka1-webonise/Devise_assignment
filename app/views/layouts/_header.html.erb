@@ -1,0 +1,31 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+
+      <a class="brand" href="#">DeviseAssignment</a>
+      <div class="container">
+        <ul class="nav">
+          <!--<li><%#= link_to "Sign out", destroy_user_session_path, :method => :delete  %></li>-->
+
+        </ul>
+        <ul class="nav pull-right">
+
+          <% if current_user.present? %>
+
+              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete  %></li>
+          <% else %>
+              <!--<li><%#= link_to "Sign in", "/path3"  %></li>-->
+          <% end %>
+
+          <% if current_admin.present? %>
+              <li><%= link_to "Sign out", destroy_admin_session_path, :method => :delete  %></li>
+          <%else %>
+              <li><%#= link_to "Sign in", "/path3"  %></li>
+          <%end %>
+
+        </ul>
+
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>

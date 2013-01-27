@@ -13,7 +13,56 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require jquery-ui
+//= require jquery.validate
 //= require_tree .
+
 $(document).ready(function() {
-    $('.dropdown-toggle').dropdown()
+    $('#calender').datepicker({
+        dateFormat: 'dd/mm/yy',
+        minDate: +0
 });
+    $(".new_product").validate({
+        rules: {
+            "product[name]":{
+                required: true,
+                maxlength:50,
+                minlength:1
+            },
+            "product[price]": {
+                digits: true,
+                require:true
+
+            },
+            "product[publish_date]":{
+                required:true,
+                digits: true
+
+            }
+
+        }
+    });
+
+
+    $(document).ready(function(){
+        $(".sign_up").validate({
+            rules: {
+
+                "user[email]": {
+                    required: true,
+                    email: true
+                },
+                "user[password]": {
+                    required:true,
+                    minlength: 8
+                },
+                "user[password_confirmation]": {
+                    equalTo: "#user_password"
+                }
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    });
+})

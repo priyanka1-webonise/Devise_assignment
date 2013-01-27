@@ -1,20 +1,19 @@
 DeviseAssignment::Application.routes.draw do
-  #devise_for :admins
 
 
-  devise_for :users #, :controllers => { :sessions => "sessions"}
+  devise_for :users , :controllers => { :sessions => "sessions"}
   devise_for :admins, :controllers => { :sessions => "admin/sessions"}
 
   resources :users do
     member do
       get :home
-      end
+    end
   end
-
+  resources :products
 
   namespace :admin do
     resources :homes do
-      collection  do
+      collection do
         get :home
       end
     end
@@ -25,8 +24,11 @@ DeviseAssignment::Application.routes.draw do
   end
 
   devise_scope :admin do
-   get "admin", :to => "devise/sessions#new"
+    get "admin", :to => "devise/sessions#new"
   end
+  #resources :products do
+
+  #end
   #match '/admin',  :to => 'admins#show'
 
   #devise_scope :user do

@@ -36,40 +36,7 @@
   </head>
   <body>
 
-
-    <!--</ul>-->
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-
-          <a class="brand" href="#">DeviseAssignment</a>
-          <div class="container">
-            <ul class="nav">
-              <!--<li><%#= link_to "Sign out", destroy_user_session_path, :method => :delete  %></li>-->
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-            <ul class="nav pull-right">
-
-              <% if current_user.present? %>
-
-              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete  %></li>
-              <% else %>
-                  <!--<li><%#= link_to "Sign in", "/path3"  %></li>-->
-              <% end %>
-
-              <% if current_admin.present? %>
-                  <li><%= link_to "Sign out", destroy_admin_session_path, :method => :delete  %></li>
-              <%else %>
-                  <li><%#= link_to "Sign in", "/path3"  %></li>
-              <%end %>
-
-            </ul>
-
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+  <%= render 'layouts/header' %>
 
     <div class="container">
         <div class="row">
@@ -77,23 +44,10 @@
             <%= bootstrap_flash %>
             <%= yield %>
           </div>
-          <div class="span3">
-            <div class="well sidebar-nav">
-              <h3>Sidebar</h3>
-              <ul class="nav nav-list">
-                <li class="nav-header">Sidebar</li>
-                <li><%= link_to "Link1", "/path1"  %></li>
-                <li><%= link_to "Link2", "/path2"  %></li>
-                <li><%= link_to "Link3", "/path3"  %></li>
-              </ul>
-            </div><!--/.well -->
-          </div><!--/span-->
+          <!--/span-->
         </div><!--/row-->
 
-      <footer>
-        <p>&copy; Company 2012</p>
-      </footer>
-
+      <%= render 'layouts/footer' %>
     </div> <!-- /container -->
 
     <!-- Javascripts
