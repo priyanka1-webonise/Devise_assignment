@@ -5,7 +5,11 @@ gem 'mysql2'
 gem "twitter-bootstrap-rails"
 gem 'devise'
 gem 'carrierwave'
+<<<<<<< HEAD
 #gem 'rmagick'
+=======
+gem 'mini_magick'
+>>>>>>> 77fbf79336c16669b74623c06ea6ba2a7760564c
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
