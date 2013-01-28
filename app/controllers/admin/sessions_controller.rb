@@ -1,5 +1,5 @@
 class Admin::SessionsController < Devise::SessionsController
-  before_filter :my_filter, :only => [:new ]
+  #before_filter :my_filter, :only => [:new ]
 
   def create
     resource = warden.authenticate!(:scope => resource_name)
