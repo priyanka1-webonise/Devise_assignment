@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  set_order: false
+  order_total: 1
+
+two:
+  set_order: false
+  order_total: 1

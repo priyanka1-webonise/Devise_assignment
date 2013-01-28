@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  belongs_to :user
+  has_many :line_item
   mount_uploader :product_image, ProductImageUploader
   attr_accessible :name, :price, :publish_date, :product_image
   validates :name, :presence => true
