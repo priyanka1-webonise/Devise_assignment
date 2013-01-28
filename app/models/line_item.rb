@@ -4,8 +4,8 @@ class LineItem < ActiveRecord::Base
   attr_accessible :product_quantity, :sub_total, :product_id, :order_id
 
   def calculate_subtotal
-    price = self.product.price || 0
-    quantity = self.product_quantity || 0
+    price = self.product.price
+    quantity = self.product_quantity
     price * quantity
   end
 
