@@ -1,0 +1,28 @@
+<% provide(:title, '') %>
+
+<div class="span5 offset2">
+  <h3></h3>
+
+
+  <%= form_for @line_item, :url => { :action => "create" }, :method => :post, :html => { :class => 'form-horizontal new_product' }  do |f| %>
+
+
+      <div class="control-group">
+        <%= f.label :product_quantity, "Product Quantity", :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :product_quantity %>
+        </div>
+      </div>
+
+
+
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit 'Add to Cart', :class => "btn btn-small btn-primary" %>
+        </div>
+      </div>
+
+  <% end %>
+</div>
+
+

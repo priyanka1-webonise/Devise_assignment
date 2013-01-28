@@ -10,7 +10,7 @@ DeviseAssignment::Application.routes.draw do
     end
   end
   resources :products
-
+  resources :line_items
   namespace :admin do
     resources :homes do
       collection do
