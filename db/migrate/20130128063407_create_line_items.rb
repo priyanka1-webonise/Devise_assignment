@@ -3,7 +3,6 @@ class CreateLineItems < ActiveRecord::Migration
     create_table :line_items do |t|
       t.integer :product_quantity
       t.integer :sub_total
-
       t.timestamps
     end
   end
