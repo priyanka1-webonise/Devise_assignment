@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(:version => 20130128065628) do
   end
 
   create_table "orders", :force => true do |t|
-    t.boolean  "set_order"
+    t.boolean  "set_order",   :default => false
     t.integer  "order_total"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "user_id"
   end
 
