@@ -3,44 +3,41 @@
 </div>
 <br>
 <div>
-  <%= form_tag  :method => :get, :url => { :action => "index" }, :html => { :class => "form-horizontal"} do %>
-
-      <br>
-      <br>
-      <br>
-      <table  class="table table-hover">
-        <tr>
-          <th>PRODUCTS</th>
-          <th></th>
-        </tr>
-        <% @products.each do |product| %>
+  <table  class="table table-hover">
+    <tr>
+      <th>PRODUCTS</th>
+      <th></th>
+    </tr>
+    <% @products.each do |product| %>
+        <%= form_for @order do |f| %>
             <tr>
+                <td>
+                    <div class="control-group">
+                     <%=  link_to image_tag(product.product_image.thumb.url) %>
+                    </div>
+                </td>
+                <td>
+                    <div class="control-group">
+                      <%= product.name %>
+                    </div>
+                </td>
+                <td>
+                  <%= f.fields_for :line_items do |form| %>
+                     <%= form.number_field :product_quantity %>
+                     <%= form.hidden_field :product_id, :value => product.id %>
+                  <% end %>
+                </td>
               <td>
                 <div class="control-group">
-                 <%=  link_to image_tag(product.product_image.thumb.url) %>
-                </div>
-              </td>
-              <td>
-                <div class="control-group">
-                  <%= product.name %>
-                </div>
-              </td>
-              <td>
-                <div class="control-group">
-                  <%= product.price %>
-                </div>
-              </td>
-              <td>
-                <div class="control-group">
-                  <span><%= link_to "add cart", new_product_line_item_path(:product_id=>product.id) %></span>
-
+                  <span><%#= link_to "add cart", new_product_line_item_path(:product_id=>product.id ),:class => "btn btn-small btn-primary" %></span>
+                  <%= f.submit 'add cart', :class => "btn btn-small btn-primary"  %>
                 </div>
               </td>
             </tr>
-        <%end %>
-
-        <tr></tr>
-        <tr></tr>
-      </table>
-  <%end%>
+        <% end %>
+    <% end %>
+    <tr></tr>
+    <tr></tr>
+  </table>
+  <%#end%>
 </div>

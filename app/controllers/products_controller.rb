@@ -3,12 +3,17 @@ class ProductsController < ApplicationController
   def index
     if current_user.present?
       @products=Product.all
-      #@product = Product.find(params[:id])
-      #@line_item = @product.line_item
+      #@order = Order.new
+      @order = Order.where(:set_order => false).first
+      unless @order.present?
+        @order = Order.create(:user_id=>current_user.id)
+      end
+      logger.info "########################################### order #{@order.inspect}"
     end
   end
 
-  def show
-    @product=Product.find(params[:id])
+
+  def update
+
   end
 end

@@ -11,12 +11,13 @@ DeviseAssignment::Application.routes.draw do
   end
 
   resources :products do
-    resources :line_items do
+    #resources :line_items do
 
-    end
+    #end
   end
+  resources :orders
 
-  resources :line_items
+  #resources :line_items
   namespace :admin do
     resources :homes do
       collection do
