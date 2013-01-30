@@ -9,17 +9,17 @@ class OrdersController < ApplicationController
     @order=Order.find(params[:id])
 
 
-    #@order_line_items = @order.line_items.build(params[:order][:line_items])
-    #@order_line_items.sub_total = @order_line_items.calculate_subtotal
-    #@last_line_item = LineItem.last.product_id
+    @order_line_items = @order.line_items.build(params[:order][:line_items])
+    @order_line_items.sub_total = @order_line_items.calculate_subtotal
+    @last_line_item = LineItem.last.product_id
     @line_items = LineItem.all
 
       @line_items.each do |line_item|
         if line_item.product_id == LineItem.last.product_id
           line_item.product_quantity = LineItem.last.product_quantity + line_item.product_quantity
         else
-          @order_line_items = @order.line_items.build(params[:order][:line_items])
-          @order_line_items.sub_total = @order_line_items.calculate_subtotal
+          #@order_line_items = @order.line_items.build(params[:order][:line_items])
+          #@order_line_items.sub_total = @order_line_items.calculate_subtotal
         end
 
       end
