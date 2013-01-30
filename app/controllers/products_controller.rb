@@ -12,8 +12,9 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show
+    @product=Product.find(params[:product_id])
 
-  def update
 
   end
 end

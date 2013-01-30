@@ -13,7 +13,11 @@ class Order < ActiveRecord::Base
   def calculate_order_total
     line_items = self.lineitems
     line_items.each do |n|
-      n.subtotal
+
+
+
+       n.subtotal
+
 
     end
 
