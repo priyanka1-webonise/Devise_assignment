@@ -2,14 +2,18 @@
   <div class="code span14 offset 13"><h2>Products</h2></div>
 </div>
 <br>
+<div class="flash_message">added successfully</div>
 <div>
+  <%=  link_to "view cart/",  line_items_path  %><div class= "count"></div>
+  <!--<div><%#= @count %></div>-->
   <table  class="table table-hover">
     <tr>
       <th>PRODUCTS</th>
       <th></th>
     </tr>
     <% @products.each do |product| %>
-        <%= form_for @order do |f| %>
+
+        <%= form_for @order, :remote => true  do |f| %>
             <tr>
                 <td>
                     <div class="control-group">
@@ -29,15 +33,18 @@
                 </td>
               <td>
                 <div class="control-group">
-                  <span><%#= link_to "add cart", new_product_line_item_path(:product_id=>product.id ),:class => "btn btn-small btn-primary" %></span>
-                  <%= f.submit 'add cart', :class => "btn btn-small btn-primary"  %>
+                  <span></span>
+                  <%= f.submit 'add cart', :class => "btn btn-small btn-primary", :id => "flash"  %>
+
                 </div>
               </td>
             </tr>
         <% end %>
+        <div id="update-container">
+       </div>
     <% end %>
     <tr></tr>
     <tr></tr>
   </table>
-  <%#end%>
+
 </div>

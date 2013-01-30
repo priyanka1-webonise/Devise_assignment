@@ -1,25 +1,40 @@
 class OrdersController < ApplicationController
 
-  def new
-    @order = Order.new
-  end
 
-  def create
-    #@order = Order.create(:user_id=>current_user.id)
-  end
 
   def update
+
+
     logger.info "########################################### update #{params.inspect}"
     @order=Order.find(params[:id])
+
+
     @order_line_items = @order.line_items.build(params[:order][:line_items])
     @order_line_items.sub_total = @order_line_items.calculate_subtotal
-    #@order.order_total = @order.calculate_order_total
+    @last_line_item = LineItem.last.product_id
+    @line_items = LineItem.all
+
+      @line_items.each do |line_item|
+        if line_item.product_id == LineItem.last.product_id
+          line_item.product_quantity = LineItem.last.product_quantity + line_item.product_quantity
+        else
+          #@order_line_items = @order.line_items.build(params[:order][:line_items])
+          #@order_line_items.sub_total = @order_line_items.calculate_subtotal
+        end
+
+      end
+
+
+    logger.info "########################################### update #{@last_line_item.inspect}"
     @order_line_items.save
-    #if @order.update_attributes(params[:order])
-      redirect_to  products_path
-   # else
-    #  redirect_to products_path
-    #end
- end
+    flash[:success] = "Added to cart!"
+
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
 
 end

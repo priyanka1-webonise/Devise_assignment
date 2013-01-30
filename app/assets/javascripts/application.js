@@ -65,4 +65,12 @@ $(document).ready(function() {
             }
         });
     });
+    $("#flash").click(function() {
+        $('.flash_message').delay(500).fadeIn('normal', function() {
+            $(this).delay(1500).fadeOut();
+        });
+    });
+
+
+
 })
