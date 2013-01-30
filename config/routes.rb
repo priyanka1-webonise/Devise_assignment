@@ -11,12 +11,12 @@ DeviseAssignment::Application.routes.draw do
   end
    #resources :orders do
   resources :products do
-    #resources :line_items do
+    # do
 
 
   end
   resources :orders
-
+  resources :line_items
 
 
 

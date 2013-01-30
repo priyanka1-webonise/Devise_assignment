@@ -1,6 +1,9 @@
 class ProductsController < ApplicationController
 
   def index
+    #respond_to do |format|
+     # format.js
+    #end
     if current_user.present?
       @products=Product.all
       #@order = Order.new
@@ -9,6 +12,7 @@ class ProductsController < ApplicationController
         @order = Order.create(:user_id=>current_user.id)
       end
       logger.info "########################################### order #{@order.inspect}"
+
     end
   end
 
