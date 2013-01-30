@@ -12,6 +12,8 @@ class OrdersController < ApplicationController
     logger.info "########################################### update #{params.inspect}"
     @order=Order.find(params[:id])
     order_line_items = @order.line_items.build(params[:order][:line_items])
+    #@order_line_items.sub_total = @order_line_items.calculate_subtotal
+    #@order.order_total = @order.calculate_order_total
     order_line_items.save
     #if @order.update_attributes(params[:order])
       redirect_to  products_path
