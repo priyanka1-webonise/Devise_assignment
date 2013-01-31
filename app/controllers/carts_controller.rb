@@ -6,8 +6,7 @@ class CartsController < ApplicationController
 
    def destroy
      logger.info "########################################### destroy #{params.inspect}"
-     #@order = Order.where(:user_id=>current_user.id).first
-    # @line_item = @order.line_items
+     @line_item = LineItem.find([:id])
    end
 
 end
