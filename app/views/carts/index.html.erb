@@ -1,3 +1,5 @@
+<div class="code span14 offset 13"><h2>View Carts</h2></div>
+
 <table class="table table-hover">
   <tr>
     <th>NAME</th>
@@ -8,11 +10,6 @@
   </tr>
    <% @order.line_items.each do |line_item| %>
         <tr>
-          <td>
-            <div class="control-group">
-              <%= line_item.id %>
-            </div>
-          </td>
           <td>
             <div class="control-group">
               <%= line_item.product.name %>
@@ -26,19 +23,17 @@
           <td>
             <div class="control-group">
               <%= line_item.product_quantity %>
-              </div>
-          </td>
-          <td>
-            <div class="control-group">
-              <div class="control-group">
-                <%= line_item.sub_total %>
-              </div>
             </div>
           </td>
           <td>
             <div class="control-group">
+              <%= line_item.sub_total %>
+              </div>
+          </td>
+          <td>
+            <div class="control-group">
               <div class="control-group">
-                <%=  link_to image_tag("glyphicons_192_circle_remove.png" ),cart_path( line_item.id ),:method => :delete %>
+                <%=  link_to image_tag("glyphicons_192_circle_remove.png" ),cart_path( line_item.id ),:confirm => "Are you sure?", :method => :delete %>
               </div>
             </div>
           </td>

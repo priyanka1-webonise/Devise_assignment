@@ -1,12 +1,4 @@
 class OrdersController < ApplicationController
-
-<<<<<<< HEAD
-
-
-
-
-
-=======
   def update
     logger.info "########################################### update #{params.inspect}"
     @order=Order.find(params[:id]) rescue nil
@@ -27,11 +19,12 @@ class OrdersController < ApplicationController
       end
       logger.info("%%%%%%%%%%%%%%%%#{@order.inspect}")
       @order.update_attributes(:order_total => @order.calculate_order_total)
+      logger.info("%%%%%%%%%%%%%%%%#{@order.inspect}")
+      @order.save
     end
     respond_to do |format|
       format.js
     end
   end
->>>>>>> d7cb29bdea3db12d973691aa40ddbf0fee845ecf
 
 end
