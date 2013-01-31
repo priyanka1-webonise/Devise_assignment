@@ -17,7 +17,7 @@ DeviseAssignment::Application.routes.draw do
   end
   resources :orders
   resources :line_items
-
+  resources :carts
 
 
   #end

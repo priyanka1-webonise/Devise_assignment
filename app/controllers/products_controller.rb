@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   def index
+    logger.info "########################################### product index #{params.inspect}"
     if current_user.present?
       @products=Product.all
       @order = Order.where(:set_order => false).first
@@ -9,7 +10,5 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show
-    @product=Product.find(params[:product_id])
-  end
+
 end

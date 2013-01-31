@@ -1,0 +1,54 @@
+<table class="table table-hover">
+  <tr>
+    <th>NAME</th>
+    <th>PRICE</th>
+    <th>QUANTITY</th>
+    <th>TOTAL</th>
+    <th>Remove From Cart</th>
+  </tr>
+   <% @order.line_items.each do |line_item| %>
+        <tr>
+          <td>
+            <div class="control-group">
+              <%= line_item.id %>
+            </div>
+          </td>
+          <td>
+            <div class="control-group">
+              <%= line_item.product.name %>
+            </div>
+          </td>
+          <td>
+            <div class="control-group">
+              <%= line_item.product.price %>
+            </div>
+          </td>
+          <td>
+            <div class="control-group">
+              <%= line_item.product_quantity %>
+              </div>
+          </td>
+          <td>
+            <div class="control-group">
+              <div class="control-group">
+                <%= line_item.sub_total %>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="control-group">
+              <div class="control-group">
+                <%=  link_to image_tag("glyphicons_192_circle_remove.png" ),cart_path( line_item.id ),:method => :delete %>
+              </div>
+            </div>
+          </td>
+        </tr>
+   <% end %>
+   <tr>
+     <td>
+       <div class="order_total">
+         <%= @order.order_total  %>
+       </div>
+     </td>
+   </tr>
+</table>
