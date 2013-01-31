@@ -12,7 +12,6 @@
       <th></th>
     </tr>
     <% @products.each do |product| %>
-
         <%= form_for @order, :remote => true  do |f| %>
             <tr>
                 <td>
