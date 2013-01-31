@@ -28,3 +28,8 @@
     height :30px;
     width  :30px
 }
+.img {
+    border: 0 none;
+    height: 21px;
+    max-width: 100%;
+}
