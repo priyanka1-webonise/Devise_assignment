@@ -1,12 +1,12 @@
 class CartsController < ApplicationController
    def index
-     logger.info "########################################### index #{params.inspect}"
      @order = Order.where(:user_id=>current_user.id).first
    end
 
    def destroy
-     logger.info "########################################### destroy #{params.inspect}"
-     @line_item = LineItem.find([:id])
+     @line_item = LineItem.find(params[:id])
+     @line_item.destroy
+     redirect_to carts_path
    end
 
 end
