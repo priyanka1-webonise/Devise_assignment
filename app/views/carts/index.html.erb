@@ -22,28 +22,47 @@
           </td>
           <td>
             <div class="control-group">
-              <%= line_item.product_quantity %>
+              <%= form_for line_item  do |f| %>
+                <%= f.number_field :product_quantity %>
+                <%= f.submit 'Update', :class => "btn btn-small btn-primary" %>
+              <% end %>
             </div>
           </td>
           <td>
             <div class="control-group">
               <%= line_item.sub_total %>
+            </div>
+          </td>
+           <td>
+            <div class="control-group">
+              <div class="control-group">
+                <%=  link_to image_tag("glyphicons_192_circle_remove.png" ),cart_path( line_item.id),:confirm => "Are you sure?", :method => :delete %>
               </div>
+            </div>
           </td>
           <td>
             <div class="control-group">
               <div class="control-group">
-                <%=  link_to image_tag("glyphicons_192_circle_remove.png" ),cart_path( line_item.id ),:confirm => "Are you sure?", :method => :delete %>
               </div>
             </div>
           </td>
         </tr>
    <% end %>
    <tr>
-     <td>
-       <div class="order_total">
-         <%= @order.order_total  %>
-       </div>
+     <td colspan="2">
+       <h5>Order total</h5>
+       <div class="order_total"></div>
+         </td>
+     <td colspan="3">
+         <%= @order.order_total%>
      </td>
    </tr>
+  <tr>
+    <td colspan="2">
+      <%=  link_to "Continue Shopping",products_path,:class => "btn btn-small btn-primary" %>
+    </td>
+    <td colspan="3">
+      <%=  link_to "Checkout",checkouts_path,:class => "btn btn-small btn-primary" %>
+    </td>
+  </tr>
 </table>
