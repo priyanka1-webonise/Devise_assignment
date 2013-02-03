@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-  before_filter :authenticate_admin! #, :only => [:index ]
+  before_filter :authenticate_admin!
 
   def new
     @product = Product.new
@@ -19,7 +19,6 @@ class Admin::ProductsController < ApplicationController
   def index
     logger.info("%%%%%%%%%%%%%%%#{current_admin.inspect}")
     if current_admin.present?
-      #@admin=Admin.find(current_admin.id)
       @products=Product.all
     end
   end
@@ -31,7 +30,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-   # @admin=current_Admin.id
     @product=Product.find(params[:id])
   end
 
