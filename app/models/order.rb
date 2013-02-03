@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :user
   has_many :line_items
+  has_one :billing_information
   attr_accessible :order_total, :set_order, :user_id
 
   def calculate_order_total
@@ -11,4 +12,5 @@ class Order < ActiveRecord::Base
     end
     return order_total
   end
+
 end

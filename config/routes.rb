@@ -9,20 +9,14 @@ DeviseAssignment::Application.routes.draw do
       get :home
     end
   end
-   #resources :orders do
+
   resources :products do
-    # do
-
-
   end
+
   resources :orders
   resources :line_items
   resources :carts
-
-
-  #end
-
-  #resources :line_items
+  resources :checkouts
   namespace :admin do
     resources :homes do
       collection do

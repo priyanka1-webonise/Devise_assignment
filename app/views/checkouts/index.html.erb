@@ -1,0 +1,116 @@
+<div class="code span14 offset 13"><h2>View Carts</h2></div>
+
+<table class="table table-hover">
+  <tr>
+    <th>NAME</th>
+    <th>PRICE</th>
+    <th>QUANTITY</th>
+    <th>TOTAL</th>
+  </tr>
+  <% @order.line_items.each do |line_item| %>
+      <tr>
+        <td>
+          <div class="control-group">
+            <%= line_item.product.name %>
+          </div>
+        </td>
+        <td>
+          <div class="control-group">
+            <%= line_item.product.price %>
+          </div>
+        </td>
+        <td>
+          <div class="control-group">
+            <%= line_item.product_quantity %>
+          </div>
+        </td>
+        <td>
+          <div class="control-group">
+            <%= line_item.sub_total %>
+          </div>
+        </td>
+        <td>&nbsp;</td>
+
+      </tr>
+
+  <tr>
+    <td colspan="2">
+      <h5>Order total</h5>
+      <div class="order_total"></div>
+    </td>
+    <td colspan="3">
+      <%= @order.order_total%>
+    </td>
+  </tr>
+</table>
+
+  <%= form_for @billing_information, :url => { :action => "create" },:html => { :class => 'form-horizontal'} do |f| %>
+
+     <div class="control-group" id="customText">
+        <%= f.label :email, "email", :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :email, :placeholder => "Email" %>
+        </div>
+       <div class="control-group" id="customText">
+         <%= f.label :address_one, "Address1", :class => 'control-label' %>
+         <div class="controls">
+           <%= f.text_field :address_one, :placeholder => "Address-1" %>
+         </div>
+     </div>
+       <div class="control-group" id="customText">
+         <%= f.label :address_two, "Address2", :class => 'control-label' %>
+         <div class="controls">
+           <%= f.text_field :address_two, :placeholder => "Address-2" %>
+         </div>
+       </div>
+       <div class="control-group" id="customText">
+         <%= f.label :city, "City", :class => 'control-label' %>
+         <div class="controls">
+           <%= f.text_field :city, :placeholder => "City" %>
+         </div>
+       </div>
+       <div class="control-group" id="customText">
+         <%= f.label :country, "Country", :class => 'control-label' %>
+         <div class="controls">
+           <%= f.select "country", options_for_select([ "India", "United state" ]) %>
+         </div>
+       </div>
+       <div class="control-group" id="customText">
+         <%= f.label :contact_no, "Contact no", :class => 'control-label' %>
+         <div class="controls">
+           <%= f.number_field :contact_no, :placeholder => "Contact no" %>
+         </div>
+       </div>
+       <div class="control-group" id="customText">
+         <%= f.label :delivery_date, "Delivery Date", :class => 'control-label' %>
+         <div class="controls">
+           <%= f.text_field :delivery_date, :placeholder => "Contact no" %>
+         </div>
+       </div>
+       <div class="control-group" id="customText">
+         <%= f.label :card_type, "Card Type", :class => 'control-label' %>
+         <div class="controls">
+           <%= f.text_field :card_type, :placeholder => "Card Type" %>
+         </div>
+       </div>
+       <div class="control-group" id="customText">
+         <%= f.label :card_number, "Card Number", :class => 'control-label' %>
+         <div class="controls">
+           <%= f.number_field :card_number, :placeholder => "Card Number" %>
+         </div>
+       </div>
+       <div class="control-group" id="customText">
+         <%= f.label :card_code, "Card Code", :class => 'control-label' %>
+         <div class="controls">
+           <%= f.number_field :card_code, :placeholder => "Card Code" %>
+         </div>
+       </div>
+       <%= f.hidden_field :order_id, :value => line_item.order.id %>
+       <div class="control-group">
+          <div class="controls">
+              <%= f.submit 'Submit', :class => "btn btn-small btn-primary" %>
+          </div>
+       </div>
+     <% end %>
+  <% end %>
+ </div>
